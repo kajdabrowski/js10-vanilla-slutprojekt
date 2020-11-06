@@ -5,42 +5,107 @@
 }
 
 body {
-height: 250vw;
-width: 100vw;
-background-color: lightgray; 
-}
-
-.landing-wrapper{
+background-color: #1f8dd6; 
 
 }
+
+html, body{
+    height: 100%;
+}
+
+
+/* .hide{
+    display: none; 
+} */
+
+section {
+    display: none;
+}
+
+.show{
+    display: inline;
+}
+
+
+
+
 
 .landing-header{
     width: 100%;
-    height: 250px;
-    background-color: #00afdb;
+    /* height: 250px; */
+
 }
 
 .landing-nav{
+    display: flex;
+    justify-content: space-around; 
+    background-color: #2d3e50;
+    height: 75px;
+    width: 100%;
 
 }
+
+.landing-nav > button{
+    border: none; 
+    font-family: "Gothic+A1";
+    font-style: normal;
+    font-size: 2em;
+    background-color:  #2d3e50;
+    color: white;
+}
+
+
 
 .landing-main{
     display: flex; /* Ska vi göra denna till flexbox även fast den bara ska innehålla 1 kort? */
     flex-direction: row; 
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: auto; 
+    min-height: 75vh; 
+
+
 }
 
 .beer-card{
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    background-color: white;
+    border-color: #2d3e50;
+    border: 5px;
+    border-style: solid;
+    padding-left: 10px;
 
 }
 
+.beer-image{
+    background-color: grey; /* Bild goes here */ 
+    margin-top: 10px;
+    height: 200px;
+    width: 270px;
+}
 
+.beer-heading{
+    font-family: "Gothic+A1";
+    font-style: normal; 
+    font-size: 1em;
+    padding-bottom: 120px;
+    
+}
 
-.search-wrapper{
+.see-more{
+    justify-self: flex-end;
+    
+}
+
+.search-page{
     display: none; /*Döljer sections 2 och 3 så vi kan stylea dem en i taget. */
+
 }
 
-.beer-info-wrapper{ 
+.beer-info-page{ 
     display: none; 
+
 }

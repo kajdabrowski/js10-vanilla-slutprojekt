@@ -8,87 +8,86 @@
     <link rel="stylesheet" href="beer.css">
     <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <!--La till dessa som är mest lika Punk IPA fontsen-->
 </head>
 
 <body>
-    <div class="landing-wrapper">
-        <!--La till wrappers för de 3 sidorna för styling.-->
-        <section class="landing-page">
-            <header class="landing-header">
-                <div class="landing-nav">
-                    <button>Landing</button>
-                    <button>Search</button>
-                    <button>Beer info</button>
+    <div class="wrapper">
+    <section class="landing-page show"> <!--Hide test-->
+        <header class="landing-header">
+            <div class="landing-nav">
+                <button>Landing</button>
+                <button>Search</button>
+                <button>Beer info</button>
 
+            </div>
+        </header>
+        <main class="landing-main">
+            <div class="beer-card">
+                <div class="beer-image"></div>
+                <div class="beer-heading">
+                    <h2>Beer</h2>
                 </div>
-            </header>
-            <main class="landing-main">
-                <div class="beer-card">
-                    <div class="beer-image"></div>
-                    <div class="beer-heading"></div>
-                    <div class="see-more"></div>
+                <div class="see-more">
+                    <button>See more</button>
+                </div>
+            </div>
+        </main>
+        <footer class="landing-footer"></footer>
+
+    </section>
+
+
+
+
+    <section class="search-page">
+        <div class="search-header">
+            <div class="search-nav">
+                <button>Landing</button>
+                <button>Search</button>
+                <button>Beer info</button>
+            </div>
+
+
+            <main class="search-main">
+                <div class="search-box">
+                    <h2>Search your beers!</h2>
+                    <form>
+                        <label>Beer:</label>
+                        <input type="text">
+                        <input type="submit" value="Search">
+                    </form>
                 </div>
             </main>
-            <footer class="landing-footer"></footer>
-
-        </section>
-    </div>
-
-
-
-    <div class="search-wrapper">
-        <section class="search-page">
-            <div class="search-header">
-                <div class="search-nav">
-                    <button>Landing</button>
-                    <button>Search</button>
-                    <button>Beer info</button>
-                </div>
-
-
-                <div class="search-main">
-                    <div class="search-box">
-                        <h2>Search your beers!</h2>
-                        <form>
-                            <label>Beer:</label>
-                            <input type="text">
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
-                </div>
-                <div class="search-footer"></div>
-        </section>
-    </div>
+            <div class="search-footer"></div>
+    </section> 
 
 
 
 
-    <div class="beer-info-wrapper">
-        <section class="beer-info-page">
-            <div class="beer-info-header">
-                <div class="beer-info-nav">
-                    <button>Landing</button>
-                    <button>Search</button>
-                    <button>Beer info</button>
-                </div>
-                <div class="main-beer-info">
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="footer-beer-info"></div>
-        </section>
-    </div>
+    <section class="beer-info-page">
+        <div class="beer-info-header">
+            <div class="beer-info-nav">
+                <button>Landing</button>
+                <button>Search</button>
+                <button>Beer info</button>
+            </div>
+            <main class="main-beer-info">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </main>
+            <div class="footer-beer-info"></div>
+    </section>
 
     <script src="main.js"></script>
+</div>
 </body>
 
 </html>
