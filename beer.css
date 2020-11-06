@@ -30,13 +30,9 @@ section {
 
 
 
-.landing-header{
-    width: 100%;
-    /* height: 250px; */
 
-}
 
-.landing-nav{
+.nav{
     display: flex;
     justify-content: space-around; 
     background-color: #2d3e50;
@@ -45,7 +41,7 @@ section {
 
 }
 
-.landing-nav > button{
+.nav > button{
     border: none; 
     font-family: "Gothic+A1";
     font-style: normal;
@@ -56,7 +52,7 @@ section {
 
 
 
-.landing-main{
+.home-main{
     display: flex; /* Ska vi göra denna till flexbox även fast den bara ska innehålla 1 kort? */
     flex-direction: row; 
     justify-content: center;
