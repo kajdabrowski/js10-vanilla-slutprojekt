@@ -1,5 +1,30 @@
-body{
-height: 500vw;
-width: 500vw;
+*{
+    padding: 0; 
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+body {
+height: 250vw;
+width: 100vw;
 background-color: peachpuff; 
+}
+
+.landing-wrapper{
+
+}
+
+.landing-header{
+    width: 100%;
+    height: 250px;
+    background-color: coral;
+}
+
+
+.search-wrapper{
+    display: none; /*Döljer sections 2 och 3 så vi kan stylea dem en i taget. */
+}
+
+.beer-info-wrapper{ 
+    display: none; 
 }
