@@ -101,7 +101,55 @@ section {
 
 }
 
+.search-main{
+    width: 100%;
+    min-height: 75vh; 
+}
+
+.search-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    width: 100%;
+    height: 75vh;
+}
+
 .beer-info-page{ 
     display: none; 
 
+}
+
+.main-beer-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.info-box{
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    border: 5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+li{
+    list-style-type: none;
+    font-size: 25px;
+    padding-left: 10px;
+    font-family:"Gothic+A1" ;
+    font-style: ;
 }
