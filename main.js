@@ -6,11 +6,11 @@ for( let button of buttons){
     button.addEventListener("click", () => {
         document.querySelectorAll(".main-page > section").forEach(
             section => section.classList.remove("show"))
-      
+                                                     .Search
       const section = document.querySelector("." + button.innerText)
       section.classList.add("show")
     })
-}
+}   
 
 const seeMoreBtn = document.querySelector(".see-more-btn")
 seeMoreBtn.addEventListener("click", () =>{
@@ -44,9 +44,9 @@ async function getData() {
 getData().then(data => beerName.innerText = data[0].name)
 getData().then(data => beerImage.src = data[0].image_url)
 
-// // let beerImageDOM = document.querySelector("div.beer-image")
-// // let beerImg = document.beer-image.createElement("img");
-// // beerImg.setAttribute("src", data[0].image_url);
+// let beerImageDOM = document.querySelector("div.beer-image")
+// let beerImg = document.beer-image.createElement("img");
+// beerImg.setAttribute("src", data[0].image_url);
 
 let beerName = document.querySelector(".beer-name") 
 let beerImage = document.querySelector(".beer-image")
