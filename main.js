@@ -14,26 +14,29 @@ for( let button of buttons){
 
 let randomBeer = "https://api.punkapi.com/v2/beers/random"
 
-let getData = async requestedData => {
-    let request = await fetch(requestedData)
-    let data  = await request.json()
-    return data
-    
+async function getData(name) {
+    // try to fetch data, if anything goes wrong catch the error and log it.
+    try {
+        let request = await fetch(randomBeer)
+        let data  = await request.json()
+
+        return data; //beerName.innerText = data[0].name;  // Ett annat alternativ
+        
+    } catch(error) {
+        console.log('error', error)
+    }
 }
+getData().then(data => beerName.innerText = data[0].name)
+getData().then(data => beerImage.innerText = data[0].image_url)
 
-let data = "https://api.punkapi.com/v2/beers/random"
+// let beerImageDOM = document.querySelector("div.beer-image")
+// let beerImg = document.beer-image.createElement("img");
+// beerImg.setAttribute("src", data[0].image_url);
 
-console.log(getData(randomBeer));
+let beerName = document.querySelector(".beer-name") 
+let beerImage = document.querySelector(".beer-image")
 
-
- let beerish = document.querySelector(".beer-name") 
-
- beerish.innerText = getData(data.name)
-  
-
-
-
-
+console.log('getData', getData())
 
 
 
