@@ -23,7 +23,7 @@ seeMoreBtn.addEventListener("click", () =>{
 })
 
 let randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
-let allBeerUrl = "https://api.punkapi.com/v2/beers"
+let allBeerUrl = "https://api.punkapi.com/v2/beers?per_page=80"
 
 /* ***** HOME FETCH ***** */
 
@@ -39,28 +39,20 @@ async function getData(url) { //Fetchar en slumpad öl. Bör skrivas om så att 
         console.log('error', error)
     } 
 }
-console.log(getData(randomBeerUrl));
 
 
-let myJsonData = getData(randomBeerUrl);
+async function Kaj(){
+    let myJsonData = await getData(randomBeerUrl);
+    let beerName = document.querySelector(".beer-name") 
+    let beerImage = document.querySelector(".beer-image")
+    beerName.innerText = myJsonData[0].name
+    beerImage.src = myJsonData[0].image_url  
+    renderData(myJsonData[0])
+    //Allt som ska på beer-info kan göras här.
+}
+Kaj()
 
-let allBeerJson = getData(allBeerUrl)
-
-console.log(allBeerJson);
-
-
-myJsonData.then(data => beerName.innerText = data[0].name)
-myJsonData.then(data => beerImage.src = data[0].image_url)
-
-
-let beerName = document.querySelector(".beer-name") 
-let beerImage = document.querySelector(".beer-image")
-
-// console.log('getData', getData())
-
-/* BEER INFO RENDER ***** */
-
-myJsonData.then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
+ 
 
 async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
 
@@ -69,8 +61,8 @@ boxList[0].innerText = "Description:" + data.description
 document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
 boxList[2].innerText = "Volume:" + data.volume    
-boxList[3].innerText = "Ingredients:" + data.ingredients   
-boxList[4].innerText = "Hops:" + data.ingredients.hops.name //Fixa denna     
+boxList[3].innerText = "Ingredients:" + data.ingredients 
+boxList[4].innerText = "Hops:" + data.ingredients.hops[0].name //Fixa denna     
 boxList[5].innerText = "Food pairing:" + data.food_pairing  
 boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
 
@@ -82,9 +74,13 @@ document.addEventListener("keypress", function (e){
     }
 })
 
-function searchBeer(){
+async function searchBeer(){
     const input = document.querySelector(".input-search")
-    getData(allBeerUrl)
+    const beerData = await getData(allBeerUrl + `&beer_name=${input.value.toLowerCase()}`)
+    document.querySelector(".search-result").innerHTML = ""
+    for(let i = 0; i < 10; i++){
+        renderAllBeers(beerData[i])
+    }
 }
 
 function renderAllBeers(beer) {
@@ -94,7 +90,6 @@ function renderAllBeers(beer) {
     liTag.innerText=beer.name
 
 }
-console.log(allBeerJson)
 
 
 
