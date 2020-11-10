@@ -97,7 +97,7 @@ section {
 }
 
 .search-page{
-    display: none; /*Döljer sections 2 och 3 så vi kan stylea dem en i taget. */
+    display: none; 
 
 }
 
@@ -129,8 +129,8 @@ section {
 }
 
 .info-box{
-    height: 500px;
-    width: 400px;
+    height: 500px; 
+    width: 300px;
     background-color: white;
     border: 5px;
     border-style: solid;
@@ -148,8 +148,17 @@ ul{
 
 li{
     list-style-type: none;
-    font-size: 25px;
+    font-size: 15px;
     padding-left: 10px;
     font-family:"Gothic+A1" ;
     font-style: ;
+}
+
+.li-image{
+    max-height: 200px; 
+    max-width: 150px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
 }

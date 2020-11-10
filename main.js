@@ -20,11 +20,12 @@ seeMoreBtn.addEventListener("click", () =>{
 })
 
 let randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
+let allBeerUrl = "https://api.punkapi.com/v2/beers"
 
 async function getData() { //Fetchar en slumpad öl. Bör skrivas om så att variabeln kan ändras för att återanvända funktionen och fetcha olika dataset <-- KOM IHÅG!
     // try to fetch data, if anything goes wrong catch the error and log it.
     try {
-        let request = await fetch(randomBeerUrl)
+        let request = await fetch(randomBeerUrl)// (randomBeerUrl)
         let data  = await request.json()
 
         return data; //beerName.innerText = data[0].name;  // Ett annat alternativ
@@ -34,8 +35,6 @@ async function getData() { //Fetchar en slumpad öl. Bör skrivas om så att var
     }
 }
 let myJsonData = getData();
-
-
 
 
 
@@ -52,14 +51,14 @@ let beerImage = document.querySelector(".beer-image")
 
 // console.log('getData', getData())
 
-let beerDescription = document.querySelector(".li-description")
-let beerImageTwo = document.querySelector(".li-image")
-let beerAlcoholByVolume = document.querySelector(".li-alcohol-by-volume")
-let beerVolume = document.querySelector(".li-volume")
-let beerIngredients = document.querySelector(".li-ingredients")
-let beerHops = document.querySelector(".li-hops")
-let beerFoodPairing = document.querySelector(".li-food-pairing")
-let beerBrewersTips = document.querySelector(".li-brewers-tips")
+// let beerDescription = document.querySelector(".li-description")
+// let beerImageTwo = document.querySelector(".li-image")
+// let beerAlcoholByVolume = document.querySelector(".li-alcohol-by-volume")
+// let beerVolume = document.querySelector(".li-volume")
+// let beerIngredients = document.querySelector(".li-ingredients")
+// let beerHops = document.querySelector(".li-hops")
+// let beerFoodPairing = document.querySelector(".li-food-pairing")
+// let beerBrewersTips = document.querySelector(".li-brewers-tips")
 
 
 // beerDescription.innerText = "Description:" + myJsonData[0].description
@@ -76,7 +75,7 @@ let beerBrewersTips = document.querySelector(".li-brewers-tips")
 // getData().then(data => beerBrewersTips.innerText = "Brewers tips:" + data[0].brewers_tips)
 
 
-getData().then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
+getData(randomBeerUrl).then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
 
 async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
 //    let data = dataArr[0]
@@ -89,11 +88,26 @@ document.querySelector(".li-image").src = data.image_url   //Bild funkar, men st
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
 boxList[2].innerText = "Volume:" + data.volume    
 boxList[3].innerText = "Ingredients:" + data.ingredients   
-boxList[4].innerText = "Hops:" + data.ingredients.hops[0, 1, 2, 3].name //Fixa denna     
+boxList[4].innerText = "Hops:" + data.ingredients.hops.name //Fixa denna     
 boxList[5].innerText = "Food pairing:" + data.food_pairing  
 boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
 }
 
+// function getAllBeers() {
+//     let beerData = getData(allBeerUrl); 
+    
+//     for(let i = 0; i <= beerData.length; i++) {
+//         if (i = beerData[0].name)
+//         //    console.log(beerData[0].name)
+            
+//     }
+    
+// }
 
-
-
+/* 
+- Fixa hela search-delen
+- Se till att see more knappen länkar till rätt öl i beer info
+- Beer info ska länka rätt information om ölen.
+- CSS för bilderna, inkl. beer info. 
+- Ha med öl-punkaren på alla sidor!!!! 
+*/
