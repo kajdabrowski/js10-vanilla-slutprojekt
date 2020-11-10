@@ -34,20 +34,65 @@ async function getData() { //Fetchar en slumpad öl. Bör skrivas om så att var
         console.log('error', error)
     }
 }
-let myJsonData = getData();
+let myJsonData = getData(randomBeerUrl);
+
+let allBeerJson = getData (allBeerUrl)
+
+console.log(allBeerJson);
 
 
+myJsonData.then(data => beerName.innerText = data[0].name)
+myJsonData.then(data => beerImage.src = data[0].image_url)
 
-// console.log("Json",myJsonData);
-getData().then(data => beerName.innerText = data[0].name)
-getData().then(data => beerImage.src = data[0].image_url)
-
-// let beerImageDOM = document.querySelector("div.beer-image")
-// let beerImg = document.beer-image.createElement("img");
-// beerImg.setAttribute("src", data[0].image_url);
 
 let beerName = document.querySelector(".beer-name") 
 let beerImage = document.querySelector(".beer-image")
+
+// console.log('getData', getData())
+
+
+
+myJsonData.then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
+
+async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
+
+const boxList = document.querySelectorAll(".info-box-list > li") 
+boxList[0].innerText = "Description:" + data.description   
+document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
+boxList[1].innerText = "Alcohol by volume: " + data.abv    
+boxList[2].innerText = "Volume:" + data.volume    
+boxList[3].innerText = "Ingredients:" + data.ingredients   
+boxList[4].innerText = "Hops:" + data.ingredients.hops.name //Fixa denna     
+boxList[5].innerText = "Food pairing:" + data.food_pairing  
+boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
+}
+
+
+// getData(allBeerUrl).then(data => getAllBeers(data[0]))
+
+// function getAllBeers() {
+//     let beerData = getData(allBeerUrl); 
+    
+//     for(let i = 0; i <= beerData.length; i++) {
+//         if (i = beerData.name)
+//           return beerData.name
+            
+//     }
+    
+// }
+
+// console.log(getAllBeers());
+
+/* 
+- Fixa hela search-delen
+- Se till att see more knappen länkar till rätt öl i beer info
+- Beer info ska länka rätt information om ölen.
+- CSS för bilderna, inkl. beer info. 
+- Ha med öl-punkaren på alla sidor!!!! 
+*/
+
+
+
 
 // console.log('getData', getData())
 
@@ -73,41 +118,9 @@ let beerImage = document.querySelector(".beer-image")
 // getData().then(data => beerHops.innerText = "Hops:" + data[0].ingredients.hops[0, 1, 2, 3].name)
 // getData().then(data => beerFoodPairing.innerText = "Food pairing:" + data[0].food_pairing)
 // getData().then(data => beerBrewersTips.innerText = "Brewers tips:" + data[0].brewers_tips)
+// console.log('getData', getData())
 
 
-getData(randomBeerUrl).then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
-
-async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
-//    let data = dataArr[0]
-//    console.log(dataArr)
-//    console.log(data)
-const boxList = document.querySelectorAll(".info-box-list > li") 
-boxList[0].innerText = "Description:" + data.description   
-// console.log(data)
-document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
-boxList[1].innerText = "Alcohol by volume: " + data.abv    
-boxList[2].innerText = "Volume:" + data.volume    
-boxList[3].innerText = "Ingredients:" + data.ingredients   
-boxList[4].innerText = "Hops:" + data.ingredients.hops.name //Fixa denna     
-boxList[5].innerText = "Food pairing:" + data.food_pairing  
-boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
-}
-
-// function getAllBeers() {
-//     let beerData = getData(allBeerUrl); 
-    
-//     for(let i = 0; i <= beerData.length; i++) {
-//         if (i = beerData[0].name)
-//         //    console.log(beerData[0].name)
-            
-//     }
-    
-// }
-
-/* 
-- Fixa hela search-delen
-- Se till att see more knappen länkar till rätt öl i beer info
-- Beer info ska länka rätt information om ölen.
-- CSS för bilderna, inkl. beer info. 
-- Ha med öl-punkaren på alla sidor!!!! 
-*/
+// let beerImageDOM = document.querySelector("div.beer-image")
+// let beerImg = document.beer-image.createElement("img");
+// beerImg.setAttribute("src", data[0].image_url);
