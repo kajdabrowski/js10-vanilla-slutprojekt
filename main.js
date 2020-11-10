@@ -1,3 +1,5 @@
+/* ***** NAV BAR ***** */
+
 const buttons = document.querySelectorAll(".nav > button")
 
 
@@ -12,6 +14,7 @@ for( let button of buttons){
     })
 }   
 
+/* ***** SEE MORE BTN ***** */
 const seeMoreBtn = document.querySelector(".see-more-btn")
 seeMoreBtn.addEventListener("click", () =>{
    document.querySelector(".Home").classList.remove("show")
@@ -22,21 +25,26 @@ seeMoreBtn.addEventListener("click", () =>{
 let randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
 let allBeerUrl = "https://api.punkapi.com/v2/beers"
 
-async function getData() { //Fetchar en slumpad öl. Bör skrivas om så att variabeln kan ändras för att återanvända funktionen och fetcha olika dataset <-- KOM IHÅG!
+/* ***** HOME FETCH ***** */
+
+async function getData(url) { //Fetchar en slumpad öl. Bör skrivas om så att variabeln kan ändras för att återanvända funktionen och fetcha olika dataset <-- KOM IHÅG!
     // try to fetch data, if anything goes wrong catch the error and log it.
     try {
-        let request = await fetch(randomBeerUrl)// (randomBeerUrl)
+        let request = await fetch(url)// (randomBeerUrl)
         let data  = await request.json()
 
         return data; //beerName.innerText = data[0].name;  // Ett annat alternativ
         
     } catch(error) {
         console.log('error', error)
-    }
+    } 
 }
+console.log(getData(randomBeerUrl));
+
+
 let myJsonData = getData(randomBeerUrl);
 
-let allBeerJson = getData (allBeerUrl)
+let allBeerJson = getData(allBeerUrl)
 
 console.log(allBeerJson);
 
@@ -50,7 +58,7 @@ let beerImage = document.querySelector(".beer-image")
 
 // console.log('getData', getData())
 
-
+/* BEER INFO RENDER ***** */
 
 myJsonData.then(data => renderData(data[0])) //Allt som ska på beer-info kan göras här. 
 
@@ -65,23 +73,37 @@ boxList[3].innerText = "Ingredients:" + data.ingredients
 boxList[4].innerText = "Hops:" + data.ingredients.hops.name //Fixa denna     
 boxList[5].innerText = "Food pairing:" + data.food_pairing  
 boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
+
 }
 
+document.addEventListener("keypress", function (e){ 
+    if (e.key === "Enter"){
+        searchBeer()
+    }
+})
 
-// getData(allBeerUrl).then(data => getAllBeers(data[0]))
+function searchBeer(){
+    const input = document.querySelector(".input-search")
+    getData(allBeerUrl)
+}
 
-// function getAllBeers() {
-//     let beerData = getData(allBeerUrl); 
-    
-//     for(let i = 0; i <= beerData.length; i++) {
-//         if (i = beerData.name)
-//           return beerData.name
-            
-//     }
-    
-// }
+function renderAllBeers(beer) {
+    let b = document.querySelector(".search-result")
+    let liTag = document.createElement("li")
+    b.append(liTag)
+    liTag.innerText=beer.name
+
+}
+console.log(allBeerJson)
+
+
 
 // console.log(getAllBeers());
+
+
+/* Render all beers:  
+- En 
+*/
 
 /* 
 - Fixa hela search-delen
