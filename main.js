@@ -41,21 +41,20 @@ async function getData(url) { //Fetchar en slumpad öl. Bör skrivas om så att 
 }
 
 
-async function Kaj(){
+async function loadPage(){  //döp om till ett bättre namn.
     let myJsonData = await getData(randomBeerUrl);
-    let beerName = document.querySelector(".beer-name") 
-    let beerImage = document.querySelector(".beer-image")
-    beerName.innerText = myJsonData[0].name
-    beerImage.src = myJsonData[0].image_url  
-    renderData(myJsonData[0])
+       renderData(myJsonData[0])
     //Allt som ska på beer-info kan göras här.
 }
-Kaj()
+loadPage()
 
  
 
 async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
-
+    let beerName = document.querySelector(".beer-name") 
+    let beerImage = document.querySelector(".beer-image")
+    beerName.innerText = data.name
+    beerImage.src =data.image_url 
 const boxList = document.querySelectorAll(".info-box-list > li") 
 boxList[0].innerText = "Description:" + data.description   
 document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
