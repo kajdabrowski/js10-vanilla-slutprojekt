@@ -32,6 +32,8 @@ section {
 
 
 
+
+
 .nav{
     display: flex;
     justify-content: space-around; 
@@ -50,6 +52,17 @@ section {
     color: white;
 }
 
+.hide{
+    display: none; 
+}
+
+/* .search-result > div{
+    display: none; 
+} */
+
+.active{
+    display: block; 
+}
 
 
 .home-main{

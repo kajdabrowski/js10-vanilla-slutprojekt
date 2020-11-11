@@ -61,7 +61,7 @@ document.querySelector(".li-image").src = data.image_url   //Bild funkar, men st
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
 boxList[2].innerText = "Volume:" + data.volume    
 boxList[3].innerText = "Ingredients:" + data.ingredients 
-boxList[4].innerText = "Hops:" + data.ingredients.hops[0].name //Fixa denna     
+boxList[4].innerText = "Hops:" + data.ingredients.hops[0].hops //Fixa denna     
 boxList[5].innerText = "Food pairing:" + data.food_pairing  
 boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
 
@@ -77,34 +77,53 @@ async function searchBeer(){
     const input = document.querySelector(".input-search")
     const beerData = await getData(allBeerUrl + `&beer_name=${input.value.toLowerCase()}`)
     document.querySelector(".search-result").innerHTML = ""
+    document.querySelector(".search-nav").innerHTML = ""
+
         for(let i = 0; i < Math.ceil(beerData.length/10); i++){
-            renderSearchPages()
+            renderSearchPages(i)
         } 
         let counter = 0; 
-        let b = document.querySelectorAll(".search-result > div")
+        let searchPage = document.querySelectorAll(".search-result > div")
     for(let i = 0; i < beerData.length; i++){
         // console.log(b[counter].childElementCount)
-        if (b[counter].childElementCount === 10){
+        if (searchPage[counter].childElementCount === 10){
             counter++
         }
         renderAllBeers(beerData[i], counter)
     }
+    searchPage[0].classList.add("active")
 }
 
-function renderSearchPages() {
+function renderSearchPages(index) {
     let searchPage = document.querySelector(".search-result")
     let divTag = document.createElement("div")
+    divTag.classList.add("hide")
+    let searchNav = document.querySelector(".search-nav")
+    let searchTag = document.createElement("p")
+    searchTag.innerText = index; 
     searchPage.append(divTag)
+    searchNav.append(searchTag)
+    searchTag.addEventListener("click", () => {
+        document.querySelectorAll(".search-result > div").forEach(element => element.classList.remove("active"))
+        divTag.classList.add("active")
+        
+        // Lägg till hide och show klasserna här (från renderAllBeers). 
+    
+    } )
     
 }
 
 
 
+
 function renderAllBeers(beer, index) {
-    let b = document.querySelectorAll(".search-result > div")
+    let beerList = document.querySelectorAll(".search-result > div")
     let liTag = document.createElement("li")
-    b[index].append(liTag)
+    beerList[index].append(liTag)
     liTag.innerText=beer.name
+    liTag.addEventListener("click", () => {
+        renderData(beer)
+    }) 
 
 }
 
