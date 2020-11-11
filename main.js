@@ -77,32 +77,57 @@ async function searchBeer(){
     const input = document.querySelector(".input-search")
     const beerData = await getData(allBeerUrl + `&beer_name=${input.value.toLowerCase()}`)
     document.querySelector(".search-result").innerHTML = ""
-    for(let i = 0; i < 10; i++){
-        renderAllBeers(beerData[i])
+        for(let i = 0; i < Math.ceil(beerData.length/10); i++){
+            renderSearchPages()
+        } 
+        let counter = 0; 
+        let b = document.querySelectorAll(".search-result > div")
+    for(let i = 0; i < beerData.length; i++){
+        // console.log(b[counter].childElementCount)
+        if (b[counter].childElementCount === 10){
+            counter++
+        }
+        renderAllBeers(beerData[i], counter)
     }
 }
 
-function renderAllBeers(beer) {
-    let b = document.querySelector(".search-result")
+function renderSearchPages() {
+    let searchPage = document.querySelector(".search-result")
+    let divTag = document.createElement("div")
+    searchPage.append(divTag)
+    
+}
+
+
+
+function renderAllBeers(beer, index) {
+    let b = document.querySelectorAll(".search-result > div")
     let liTag = document.createElement("li")
-    b.append(liTag)
+    b[index].append(liTag)
     liTag.innerText=beer.name
 
 }
 
 
 
-// console.log(getAllBeers());
+function nextPage(beer) {
+    // let page = document.querySelector(".search-next-page")
+    let liTag = document.createElement("li")
+    page.append(liTag)
+    liTag.innerText=beer.name
+
+}
 
 
-/* Render all beers:  
-- En 
-*/
+
+
 
 /* 
-- Fixa hela search-delen
-- Se till att see more knappen länkar till rätt öl i beer info
-- Beer info ska länka rätt information om ölen.
+-> Search
+* Paginera sökresultaten, vid fler resultat än 10st. 
+
+* Search resultaten ska vara klickbara och gå till beer info för den klickade ölen. 
+-> Beer info ska länka rätt information om ölen.
 - CSS för bilderna, inkl. beer info. 
 - Ha med öl-punkaren på alla sidor!!!! 
 */
