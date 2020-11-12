@@ -126,7 +126,28 @@ section {
     justify-content: center;
     align-items:center ;
     width: 100%;
-    height: 75vh;
+    height: 50vh;
+}
+
+.search-nav{ /* La till denna för att centrera */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:"Gothic+A1";
+    letter-spacing: 10px;
+    margin-top: 15px;
+}
+
+.search-nav > p{ /* La till denna, men den verkar blockas av user agent stylesheet */ 
+    font-family: "Gothic+A1", sans-serif;
+    font-style: normal;
+    font-size: large;
+}
+
+.search-result{ /* La till denna för att centrera */ 
+    display: flex;
+    justify-content: center;
+    align-items:center ;
 }
 
 .beer-info-page{ 

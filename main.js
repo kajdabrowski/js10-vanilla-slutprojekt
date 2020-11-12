@@ -54,22 +54,29 @@ async function renderData(data) { //Tar emot 1 öl-objekt från getData funktion
     let beerName = document.querySelector(".beer-name") 
     let beerImage = document.querySelector(".beer-image")
     beerName.innerText = data.name
-    beerImage.src =data.image_url 
+    beerImage.src = data.image_url 
 const boxList = document.querySelectorAll(".info-box-list > li") 
 boxList[0].innerText = "Description:" + data.description   
-document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
+document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.   
+// if(data.image_url = null){
+//     let placeholderImage = "https://media.istockphoto.com/photos/mature-punk-rocker-holding-a-pint-of-beer-picture-id520847074?k=6&m=520847074&s=170667a&w=0&h=Wv4SFgeFm_fdC3BoU80cV4rS1bCf93U-bXxwYGxPWmQ="
+//     document.querySelector(".li-image").src = placeholderImage
+// }
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
-boxList[2].innerText = "Volume:" + data.volume.value + " " + data.volume.unit
-let newArr = []
+boxList[2].innerText = "Volume:" + " " + data.volume.value + " " + data.volume.unit
+let newArrMalts = []
 for(let i = 0 ; i < data.ingredients.malt.length; i++){
-    newArr.push(data.ingredients.malt[i].name)
+    newArrMalts.push(data.ingredients.malt[i].name+"\n")
     
 }   
-console.log(newArr);
-boxList[3].innerText = "Ingredients:"+ " "+ "Malts-" + newArr + " " + "Yeast-" + data.ingredients.yeast
-boxList[4].innerText = "Hops:" + data.ingredients.hops[0].hops //Fixa denna     
-boxList[5].innerText = "Food pairing:" + data.food_pairing  
-boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
+boxList[3].innerText = "Ingredients:"+ " "+ "Malts-" + newArrMalts + " " + "Yeast-" + data.ingredients.yeast
+let newArrHops = []
+for (let i = 0; i < data.ingredients.hops.length; i++){
+    newArrHops.push(data.ingredients.hops[i].name+" ")
+}
+boxList[4].innerText = "Hops:" + " " + newArrHops    
+boxList[5].innerText = "Food pairing:" + " " + data.food_pairing  
+boxList[6].innerText = "Brewers tips:" + " " + data.brewers_tips 
 
 }
 
