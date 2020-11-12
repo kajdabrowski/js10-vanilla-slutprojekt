@@ -53,21 +53,22 @@ loadPage()
 async function renderData(data) { //Tar emot 1 öl-objekt från getData funktionen.
     let beerName = document.querySelector(".beer-name") 
     let beerImage = document.querySelector(".beer-image")
-    beerName.innerText = data.name
-    beerImage.src = data.image_url 
+    beerName.innerText = data.name 
 const boxList = document.querySelectorAll(".info-box-list > li") 
 boxList[0].innerText = "Description:" + data.description   
-document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.   
-// if(data.image_url = null){
-//     let placeholderImage = "https://media.istockphoto.com/photos/mature-punk-rocker-holding-a-pint-of-beer-picture-id520847074?k=6&m=520847074&s=170667a&w=0&h=Wv4SFgeFm_fdC3BoU80cV4rS1bCf93U-bXxwYGxPWmQ="
-//     document.querySelector(".li-image").src = placeholderImage
-// }
+if(data.image_url){
+
+    document.querySelector(".li-image").src = data.image_url 
+    beerImage.src = data.image_url     
+} else{
+    beerImage.src = "https://media.istockphoto.com/photos/mature-punk-rocker-holding-a-pint-of-beer-picture-id520847074?k=6&m=520847074&s=170667a&w=0&h=Wv4SFgeFm_fdC3BoU80cV4rS1bCf93U-bXxwYGxPWmQ="
+    document.querySelector(".li-image").src = "https://media.istockphoto.com/photos/mature-punk-rocker-holding-a-pint-of-beer-picture-id520847074?k=6&m=520847074&s=170667a&w=0&h=Wv4SFgeFm_fdC3BoU80cV4rS1bCf93U-bXxwYGxPWmQ="
+}
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
 boxList[2].innerText = "Volume:" + " " + data.volume.value + " " + data.volume.unit
 let newArrMalts = []
 for(let i = 0 ; i < data.ingredients.malt.length; i++){
-    newArrMalts.push(data.ingredients.malt[i].name+"\n")
-    
+    newArrMalts.push(data.ingredients.malt[i].name+"\n") 
 }   
 boxList[3].innerText = "Ingredients:"+ " "+ "Malts-" + newArrMalts + " " + "Yeast-" + data.ingredients.yeast
 let newArrHops = []
