@@ -59,8 +59,14 @@ const boxList = document.querySelectorAll(".info-box-list > li")
 boxList[0].innerText = "Description:" + data.description   
 document.querySelector(".li-image").src = data.image_url   //Bild funkar, men storlek är fucked.  
 boxList[1].innerText = "Alcohol by volume: " + data.abv    
-boxList[2].innerText = "Volume:" + data.volume    
-boxList[3].innerText = "Ingredients:" + data.ingredients 
+boxList[2].innerText = "Volume:" + data.volume.value + " " + data.volume.unit
+let newArr = []
+for(let i = 0 ; i < data.ingredients.malt.length; i++){
+    newArr.push(data.ingredients.malt[i].name)
+    
+}   
+console.log(newArr);
+boxList[3].innerText = "Ingredients:"+ " "+ "Malts-" + newArr + " " + "Yeast-" + data.ingredients.yeast
 boxList[4].innerText = "Hops:" + data.ingredients.hops[0].hops //Fixa denna     
 boxList[5].innerText = "Food pairing:" + data.food_pairing  
 boxList[6].innerText = "Brewers tips:" + data.brewers_tips 
