@@ -107,6 +107,16 @@ async function searchBeer(){
     searchPage[0].classList.add("active")
 }
 
+
+
+
+// const seeMoreBtn = document.querySelector(".see-more-btn")
+// seeMoreBtn.addEventListener("click", () =>{
+//    document.querySelector(".Home").classList.remove("show")
+
+//    document.querySelector(".Beer-Info").classList.add("show")
+// })
+
 function renderSearchPages(index) {
     let searchPage = document.querySelector(".search-result")
     let divTag = document.createElement("div")
@@ -119,11 +129,13 @@ function renderSearchPages(index) {
     searchTag.addEventListener("click", () => {
         document.querySelectorAll(".search-result > div").forEach(element => element.classList.remove("active"))
         divTag.classList.add("active")
-        
+                   
     
     } )
     
 }
+
+ 
 
 
 
@@ -135,6 +147,8 @@ function renderAllBeers(beer, index) {
     liTag.innerText=beer.name
     liTag.addEventListener("click", () => {
         renderData(beer)
+        document.querySelectorAll("section").forEach(element => element.classList.remove("show"))
+        document.querySelector(".Beer-Info").classList.add("show")        
     }) 
 
 }
