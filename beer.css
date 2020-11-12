@@ -212,7 +212,7 @@ ul{
     
 }
 
-li{
+.info-box-list > li{
     list-style-type: none;
     color: black;
     font-family:'Helvetica Neue', sans-serif; 
@@ -221,9 +221,26 @@ li{
     text-align: justify; 
     text-justify: inter-word;
     padding-left: 10px;
-    margin-top: 15px;
     
 }
+
+.search-result > div > li{
+    list-style-type: none;
+    color: black;
+    font-family:'Helvetica Neue', sans-serif; 
+    font-size: 17px; 
+    line-height: 20px;  
+    text-align: justify; 
+    text-justify: inter-word;
+    padding-left: 10px; 
+    border: 2px solid  #296892;
+
+}
+
+.search-result > div > :nth-child(odd){
+    background-color: #40a5e9;
+}
+
 .li-image-frame{
     display: flex;
     justify-content: center;
@@ -265,7 +282,6 @@ li{
 
 .search-result{
     background-color: #47b5ff;
-    
 }
 
 span{
